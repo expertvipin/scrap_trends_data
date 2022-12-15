@@ -113,10 +113,13 @@ for key in Title_temp:
 dic1={}
 K=300
 for key in dic:
-    if int(''.join(e for e in dic[key] if e.isalnum()))>K:
+    # print(''.join(e for e in dic[key] if e.isdigit()))
+    if int(''.join(e for e in dic[key] if e.isdigit()))>K:
         dic1[key]=dic[key]
-
-for key,value in dic1.items():
-    print(key+" : "+value)
+with open("latest_trends.txt", 'w') as f:
+    for key,value in dic1.items():
+        f.write(key+","+value)
+        f.write("\n")
+print("data saved Successfully")
 
 driver.close()
